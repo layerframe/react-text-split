@@ -1,19 +1,35 @@
 /**
  * WordTextSplit
  */
+import React from 'react';
 import TextSplit from './TextSplit';
 import PropTypes from 'prop-types'
 
-const WHITESPACE_SPLIT_REGEX = /(\s+)/;
+const WORD_SEPARATOR = /\s+/;
 
-class WordTextSplit extends TextSplit {
-  splitText() {
-    return this.props.text.split(WHITESPACE_SPLIT_REGEX).filter((n) => n !== '');
-  }
+const WordTextSplit = (props) => {
+  const { as, children } = props
+  return React.createElement(
+    TextSplit,
+    { string: children, separator: WORD_SEPARATOR },
+    substrings =>
+      substrings.map(({ substring, key }, index) =>
+        React.createElement(
+          as,
+          { ...props, key },
+          index < substrings.length - 1 ? `${substring} ` : substring
+        )
+      )
+  );
 }
 
 WordTextSplit.propTypes = {
-  text: PropTypes.string.isRequired,
-}
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  children: PropTypes.string.isRequired
+};
+
+WordTextSplit.defaultProps = {
+  as: 'span',
+};
 
 export default WordTextSplit;

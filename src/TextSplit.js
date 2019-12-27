@@ -3,61 +3,41 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types'
+import split from 'lodash.split'
 
 const WHITESPACE_ONLY_REGEX = /^\s*$/;
 
-
 const TextSplit = (props) => {
   const {
-    text,
-    classBase,
+    string,
+    children,
+    separator
   } = props
 
-/**
-* splitText
-* Override this function for different styles
-* @return {array[string]} array of split text value
-*/
-  let splitText = () => {
-    return [text];
-  }
+  // String.prototype.split splits text by UTF-16 codeunit, which breaks
+  // surrogate pairs, and can lead to unexpected results.
+  // @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split#Syntax
+  let substrings = split(string, separator)
 
-/**
-* renderPart
-* @param {string} text
-* @param {number} index
-*/
-  const renderPart = (text, index) => {
-    var partNumber = `part-${index}`;
-    var classString = `${partNumber} ${classBase}-part`;
-
-    if (WHITESPACE_ONLY_REGEX.test(text)) {
-      classString += ` whitespace ${classBase}-whitespace`;
-    }
-
-    // replace spaces
-    text = text.replace(/ /g, '\u00A0');
-
-    return <span aria-hidden className={classString} key={index}>{text}</span>;
-  }
-
-  return (
-    <span aria-label={text} className={classBase + '-base'}>
-      { splitText().map((text, i) => renderPart(text, i))}
-    </span>
-  )
+  return children(
+    substrings.map((substring, index) => ({
+      substring,
+      key: `${substring}-${index}`
+    }))
+  );
 }
 
 TextSplit.propTypes = {
-  text: PropTypes.string,
-  classBase: PropTypes.string,
-  children: PropTypes.string
+  string: PropTypes.string.isRequired,
+  children: PropTypes.func.isRequired,
+  separator: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(RegExp)
+  ])
 };
 
 TextSplit.defaultProps = {
-  classBase: 'text-split',
-  text: '',
-  children: '',
+  separator: '',
 };
 
 export default TextSplit;

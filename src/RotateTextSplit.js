@@ -27,7 +27,7 @@ const RotateTextSplit = (props) => {
     <Type
       classBase={classBase}
     >
-      {values[index] || children}
+      {values[index]}
     </Type>
   );
 }
