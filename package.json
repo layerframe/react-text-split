@@ -15,11 +15,7 @@
   "scripts": {
     "build": "node_modules/.bin/babel ./src/index.js -o ./dist/ReactTextSplit.js && node_modules/.bin/babel ./src/index.js -o ./dist/ReactTextSplit.min.js --presets minify",
     "test": "jest",
-    "publish": "npm publish --access public",
-    "prepublish": "npm run build"
-  },
-  "engines": {
-    "node": ">=0.10.0"
+    "publish": "npm publish --access public"
   },
   "devDependencies": {
     "babel-preset-minify": "^0.5.1",
@@ -30,7 +26,6 @@
     "react": "16.12.0",
     "react-dom": "16.12.0"
   },
-  "peerDependencies": {},
   "jest": {
     "unmockedModulePathPatterns": [
       "react",
