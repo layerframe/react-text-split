@@ -31,7 +31,7 @@ export default {
     resolve(),
     babel({
       presets: [
-        'react-app',
+        '@babel/preset-react',
         '@babel/preset-env',
       ],
       plugins: [

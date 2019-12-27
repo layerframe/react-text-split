@@ -1,6 +1,8 @@
 React Text Split
 ================
 
+# DO NOT USE. SEE <https://www.npmjs.com/package/@squib/react-split>
+
 Provides a set of React components to split a text string up for easy CSS styling
 
 ## Install

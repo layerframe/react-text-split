@@ -1,8 +1,8 @@
 {
   "name": "@layerframers/react-text-split",
-  "version": "1.0.4",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "version": "1.0.6",
+  "main": "index.js",
+  "module": "index.es.js",
   "jsnext:main": "dist/index.es.js",
   "engines": {
     "node": ">=8",
@@ -32,6 +32,13 @@
     "prepare": "yarn build",
     "release": "npm publish --access public"
   },
+  "dependencies": {
+    "lodash.split": "^4.0.0",
+    "prop-types": "^15.6.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.2.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.5",
@@ -43,14 +50,11 @@
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@babel/plugin-syntax-dynamic-import": "^7.7.4",
     "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
     "@rollup/plugin-node-resolve": "^6.0.0",
     "@rollup/plugin-url": "^4.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "babel-preset-minify": "^0.5.1",
-    "babel-preset-react-app": "^9.1.0",
     "babelrc-rollup": "^3.0.0",
-    "lodash.split": "^4.4.2",
-    "prop-types": "^15.7.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "rollup": "^1.27.14",
