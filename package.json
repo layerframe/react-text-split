@@ -1,6 +1,6 @@
 {
-  "name": "react-text-split",
-  "version": "0.0.0",
+  "name": "@layerframers/react-text-split",
+  "version": "1.0.0",
   "main": "dist/ReactTextSplit.js",
   "tags": [
     "react-component",
@@ -9,31 +9,25 @@
     "text"
   ],
   "scripts": {
-    "build": "npm run test && gulp regular && gulp min",
-    "test": "npm run-script jscs && jest",
-    "jscs": "jscs ./src",
+    "build": "node_modules/.bin/babel ./src/index.js -o ./dist/ReactTextSplit.js && node_modules/.bin/babel ./src/index.js -o ./dist/ReactTextSplit.min.js --presets minify",
+    "test": "jest",
+    "publish": "npm publish --access public",
     "prepublish": "npm run build"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "devDependencies": {
-    "babel-core": "^4.7.6",
-    "babel-loader": "^4.2.0",
-    "esprima-fb": "^13001.1001.0-dev-harmony-fb",
-    "gulp": "^3.8.11",
-    "gulp-webpack-build": "^0.6.0",
-    "jest-cli": "^0.4.0",
-    "jscs": "jscs-dev/node-jscs#d6fcbc48ab4b09bd1f966a4b9495cd6bf2f9631e",
-    "jscs-loader": "0.0.5",
-    "react": "0.13.*",
-    "webpack": "^1.7.3"
+    "babel-preset-minify": "^0.5.1",
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.5",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
   },
-  "peerDependencies": {
-    "react": "0.13.*"
-  },
+  "peerDependencies": {},
   "jest": {
-    "scriptPreprocessor": "<rootDir>/test-preprocessor.js",
     "unmockedModulePathPatterns": [
       "react",
       "react/addons"

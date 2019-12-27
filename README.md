@@ -13,10 +13,10 @@ The global variable `ReactTextSplit` is available for use.
 
 ### NPM
 
-`npm install react-text-split`
+`yarn add @layerframers/react-text-split`
 
 ```javascript
-  var ReactTextSplit = require('react-text-split');
+  import { TextSplit, WordTextSplit, LetterTextSplit, RotateTextSplit } from 'react-text-split';
 ```
 
 ## Usage
