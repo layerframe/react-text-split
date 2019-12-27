@@ -8,6 +8,10 @@
     "span",
     "text"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/layerframe/react-text-split.git"
+  },
   "scripts": {
     "build": "node_modules/.bin/babel ./src/index.js -o ./dist/ReactTextSplit.js && node_modules/.bin/babel ./src/index.js -o ./dist/ReactTextSplit.min.js --presets minify",
     "test": "jest",
