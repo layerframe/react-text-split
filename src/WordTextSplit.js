@@ -1,5 +1,6 @@
-'use strict';
-
+/**
+ * WordTextSplit
+ */
 import TextSplit from './TextSplit';
 
 const WHITESPACE_SPLIT_REGEX = /(\s+)/;
@@ -10,4 +11,4 @@ class WordTextSplit extends TextSplit {
   }
 }
 
-module.exports = WordTextSplit;
+export default WordTextSplit;

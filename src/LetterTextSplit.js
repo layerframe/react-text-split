@@ -1,5 +1,6 @@
-'use strict';
-
+/**
+ * LetterTextSplit
+ */
 import TextSplit from './TextSplit';
 
 class LetterTextSplit extends TextSplit {
@@ -8,4 +9,4 @@ class LetterTextSplit extends TextSplit {
   }
 }
 
-module.exports = LetterTextSplit;
+export default LetterTextSplit;

@@ -5,7 +5,7 @@ import WordTextSplit from './WordTextSplit';
 import LetterTextSplit from './LetterTextSplit';
 import RotateTextSplit from './RotateTextSplit';
 
-module.exports = {
+export default {
   TextSplit,
   WordTextSplit,
   LetterTextSplit,

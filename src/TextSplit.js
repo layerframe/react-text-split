@@ -1,5 +1,6 @@
-'use strict';
-
+/**
+ * TextSplit
+ */
 import React from 'react';
 
 const WHITESPACE_ONLY_REGEX = /^\s*$/;
@@ -48,4 +49,4 @@ TextSplit.defaultProps = {
   classBase: 'text-split',
   text: ''
 };
-module.exports = TextSplit;
+export default TextSplit;

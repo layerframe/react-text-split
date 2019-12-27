@@ -1,5 +1,6 @@
-'use strict';
-
+/**
+ * RotateTextSplit
+ */
 import React from 'react';
 import TextSplit from './TextSplit';
 
@@ -57,4 +58,4 @@ RotateTextSplit.propTypes = {
   classBase: React.PropTypes.string
 };
 
-module.exports = RotateTextSplit;
+export default RotateTextSplit;
