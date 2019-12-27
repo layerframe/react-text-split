@@ -2,29 +2,37 @@
  * TextSplit
  */
 import React from 'react';
+import PropTypes from 'prop-types'
 
 const WHITESPACE_ONLY_REGEX = /^\s*$/;
 
-class TextSplit extends React.Component {
-  shouldComponentUpdate(newProps) {
-    return this.props.text !== newProps.text || this.props.classBase !== newProps.classBase;
+
+const TextSplit = (props) => {
+  const {
+    text,
+    classBase,
+  } = props
+
+/**
+* splitText
+* Override this function for different styles
+* @return {array[string]} array of split text value
+*/
+  let splitText = () => {
+    return [text];
   }
 
-  /**
-   * Override this function for different styles
-   *
-   * @return {String[]} array of split text value
-   */
-  splitText() {
-    return [this.props.text];
-  }
-
-  renderPart(text, index) {
+/**
+* renderPart
+* @param {string} text
+* @param {number} index
+*/
+  const renderPart = (text, index) => {
     var partNumber = `part-${index}`;
-    var classString = `${partNumber} ${this.props.classBase}-part`;
+    var classString = `${partNumber} ${classBase}-part`;
 
     if (WHITESPACE_ONLY_REGEX.test(text)) {
-      classString += ` whitespace ${this.props.classBase}-whitespace`;
+      classString += ` whitespace ${classBase}-whitespace`;
     }
 
     // replace spaces
@@ -33,20 +41,23 @@ class TextSplit extends React.Component {
     return <span aria-hidden className={classString} key={index}>{text}</span>;
   }
 
-  render() {
-    return (
-      <span aria-label={this.props.text} className={this.props.classBase + '-base'}>
-        { this.splitText().map((text, i) => this.renderPart(text, i))}
-      </span>
-    );
-  }
+  return (
+    <span aria-label={text} className={classBase + '-base'}>
+      { splitText().map((text, i) => renderPart(text, i))}
+    </span>
+  )
 }
+
 TextSplit.propTypes = {
-  text: React.PropTypes.string,
-  classBase: React.PropTypes.string
+  text: PropTypes.string,
+  classBase: PropTypes.string,
+  children: PropTypes.string
 };
+
 TextSplit.defaultProps = {
   classBase: 'text-split',
-  text: ''
+  text: '',
+  children: '',
 };
+
 export default TextSplit;

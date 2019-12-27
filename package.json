@@ -1,6 +1,6 @@
 {
   "name": "@layerframers/react-text-split",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -30,7 +30,6 @@
     "lint": "esw --ext .jsx --ext .js --color",
     "lint:fix": "yarn lint --fix",
     "prepare": "yarn build",
-    "prerelease": "yarn lint:fix && yarn test:coverage && yarn build",
     "release": "npm publish --access public"
   },
   "devDependencies": {
@@ -38,6 +37,7 @@
     "@babel/core": "^7.7.5",
     "@babel/node": "^7.7.4",
     "@babel/plugin-external-helpers": "^7.7.4",
+    "@babel/plugin-proposal-async-generator-functions": "^7.7.4",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
@@ -49,6 +49,7 @@
     "babel-preset-minify": "^0.5.1",
     "babel-preset-react-app": "^9.1.0",
     "babelrc-rollup": "^3.0.0",
+    "prop-types": "^15.7.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "rollup": "^1.27.14",

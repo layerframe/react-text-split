@@ -16,7 +16,10 @@ The global variable `ReactTextSplit` is available for use.
 `yarn add @layerframers/react-text-split`
 
 ```javascript
-  import { TextSplit, WordTextSplit, LetterTextSplit, RotateTextSplit } from 'react-text-split';
+  import TextSplit from 'react-text-split';
+  import WordTextSplit from 'react-text-split';
+  import LetterTextSplit from 'react-text-split';
+  import RotateTextSplit from 'react-text-split';
 ```
 
 ## Usage

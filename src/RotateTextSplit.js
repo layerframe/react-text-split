@@ -1,61 +1,49 @@
 /**
  * RotateTextSplit
  */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TextSplit from './TextSplit';
+import PropTypes from 'prop-types'
 
-class RotateTextSplit extends React.Component {
-  constructor(props) {
-    super(props);
+const RotateTextSplit = (props) => {
+  const {
+    type: Type,
+    values,
+    classBase,
+    interval,
+    children,
+  } = props
+  const [index, setIndex] = useState(0)
 
-    this.state = {
-      index: 0
-    };
-  }
+  useEffect(() => {
+    const _timer = setInterval(() => {
+      setIndex(prevIndex => (prevIndex + 1) % values.length);
+    }, interval);
 
-  shouldComponentUpdate(newProps, newState) {
-    // if timer ticked the index up
-    if (newState.index !== this.state.index) return true;
+    return () => clearInterval(_timer)
+  })
 
-    // if we're switching types
-    if (this.props.type !== newProps.type) return true;
-
-    // if it's the same array
-    if (this.props.values === newProps.values) return false;
-
-    // if they're not the same length
-    if (this.props.values.length != newProps.length) return true;
-
-    // check each individual for changes
-    for (var i = 0; i < this.props.values.length; ++i) {
-      if (this.props.values[i] !== newProps[i]) return true;
-    }
-
-    return false;
-  }
-
-  componentDidMount() {
-    // TODO allow modification of the timer
-    this._timer = setInterval(() => {
-      this.setState({
-        index: (this.state.index + 1) % this.props.values.length
-      });
-    }, 2000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this._timer);
-  }
-
-  render() {
-    var Type = this.props.type;
-    return <Type text={this.props.values[this.state.index]} classBase={this.props.classBase} />;
-  }
+  return (
+    <Type
+      classBase={classBase}
+    >
+      {values[index] || children}
+    </Type>
+  );
 }
+
 RotateTextSplit.propTypes = {
-  values: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-  type: React.PropTypes.instanceOf(TextSplit).isRequired,
-  classBase: React.PropTypes.string
+  values: PropTypes.arrayOf(PropTypes.string).isRequired,
+  type: PropTypes.instanceOf(TextSplit).isRequired,
+  interval: PropTypes.number,
+  classBase: PropTypes.string,
+  children: PropTypes.string,
+};
+
+RotateTextSplit.defaultProps = {
+  interval: 2000,
+  classBase: 'text-split',
+  children: '',
 };
 
 export default RotateTextSplit;
